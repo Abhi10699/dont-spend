@@ -1,26 +1,26 @@
+import Link from "next/link";
 import Image from "next/image";
+import profilePic from '@/app/assets/shoes.jpg'
+
 
 export default function Home() {
   return (
     <div>
-      <div className="min-h-screen bg-gray-900 text-white">
+      <div className="min-h-screen text-white">
         {/* Navbar + Hero Section */}
         <nav className="w-full py-4 px-8 bg-black text-white flex justify-between items-center fixed top-0 left-0 z-10">
-          <div className="text-2xl font-bold">🚫 Don't Spend</div>
-          <div>
-            <button className="bg-white text-indigo-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
-              Get Started
-            </button>
-          </div>
+          <div className="text-2xl font-bold">CENTIFY</div>
         </nav>
         <section className="h-screen flex flex-col justify-center items-center text-center px-4 bg-black">
           <h1 className="text-6xl font-bold mb-6 text-white">Make Every Cent Count</h1>
           <p className="text-xl md:text-2xl mb-6 text-gray-300">
             Take control of your spending and achieve your financial goals.
           </p>
-          <button className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-500 transition-colors">
-            Get Started
-          </button>
+          <Link href="/auth">
+            <button className="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-500 transition-colors">
+              Start Saving
+            </button>
+          </Link>
         </section>
 
       </div>
@@ -179,8 +179,8 @@ export default function Home() {
           </div>
           {/* Right Column: Image */}
           <div className="relative">
-            <img src="/shoe-image.png" alt="Sneakers" className="w-full h-auto shadow-lg rounded-lg" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black opacity-20 rounded-lg"></div>
+            <Image src={profilePic} alt="Sneakers" className="w-full h-auto rounded-lg" width={200} height={200} />
+            <div className="absolute inset-0 rounded-lg"></div>
           </div>
         </div>
       </section>
