@@ -1,8 +1,11 @@
+import { updateUserDaysSaved } from "../home/services/expense.service"
+
 type ExpenseCardProps = {
   itemName: string;
   itemPrice: number;
   moneySaved: number;
   streakDays: number;
+  id: number,
   goals: Array<{
     goalAmount: number,
     goalDays: number,
@@ -28,7 +31,7 @@ export function ExpenseCard(props: ExpenseCardProps) {
       </div>
       <div className="flex flex-col justify-between mt-4 md:mt-0">
         <div className="flex justify-start md:justify-end gap-2 mb-4">
-          <button className="py-3 w-full border-2 text-white rounded-lg border-red-400">Spent 😖</button>
+          <button onClick={_ => updateUserDaysSaved(props.id)} className="py-3 w-full border-2 border-red-500 text-white rounded-lg bg-red-600">Spent 😖</button>
         </div>
         {props.goals.length != 0 && <div className="border-t border-gray-700 pt-4">
           <h4 className="text-lg font-medium text-gray-300">Goals</h4>

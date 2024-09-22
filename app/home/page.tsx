@@ -20,11 +20,12 @@ function Home(props: any) {
   return (
     <div className="flex flex-col gap-3">
       {userExpenses?.map(e => <ExpenseCard
+        id={e.id}
         itemName={e.itemName}
         itemPrice={e.itemCost}
         streakDays={e.streakDays}
         goals={[{ goalAmount: 150, goalDays: 10, goalTitle: "New Balance 550 Shoes" }]}
-        moneySaved={e.streakDays * e.itemCost}
+        moneySaved={e.totalSaved}
       />)}
     </div>
   )
