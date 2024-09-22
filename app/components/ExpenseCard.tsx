@@ -28,8 +28,7 @@ export function ExpenseCard(props: ExpenseCardProps) {
       </div>
       <div className="flex flex-col justify-between mt-4 md:mt-0">
         <div className="flex justify-start md:justify-end gap-2 mb-4">
-          <button className="py-3 w-full border-2 text-white rounded-lg border-green-400">Remove 😁</button>
-          <button className="py-3 w-full border-2 text-white rounded-lg border-red-400">Add 😖</button>
+          <button className="py-3 w-full border-2 text-white rounded-lg border-red-400">Spent 😖</button>
         </div>
         {props.goals.length != 0 && <div className="border-t border-gray-700 pt-4">
           <h4 className="text-lg font-medium text-gray-300">Goals</h4>

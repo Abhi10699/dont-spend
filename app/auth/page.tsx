@@ -14,7 +14,7 @@ export default function Auth() {
   const authForm = useForm<IEmailAuthFields>();
 
   const handleLoginWithGoogle = async (formVals: IEmailAuthFields) => {
-    const { data, error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: formVals.email,
       password: formVals.password
     });

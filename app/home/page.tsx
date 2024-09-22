@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { ExpenseCard } from "../components/ExpenseCard";
-import { withAuth } from "../withAuth"
 import { ExpenseState } from "./models/expense.model";
 import { fetchUserExpenses } from "./services/expense.service";
 
@@ -19,7 +18,7 @@ function Home(props: any) {
 
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="flex flex-col gap-3">
       {userExpenses?.map(e => <ExpenseCard
         itemName={e.itemName}
         itemPrice={e.itemCost}
@@ -31,4 +30,4 @@ function Home(props: any) {
   )
 }
 
-export default withAuth(Home);
+export default Home;
