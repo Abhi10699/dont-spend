@@ -27,37 +27,37 @@ export default function Auth() {
 
   return (
     <div>
-      <section className="h-screen flex items-center justify-center bg-[#131313]">
-        <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+      <section className="h-screen flex items-center justify-center bg-black">
+        <div className="bg-[#131313] p-8 rounded-lg shadow-lg max-w-md w-full">
           {/* Title */}
-          <h2 className="text-2xl font-bold mb-6 text-gray-900 text-center">Sign In to CENTIFY</h2>
+          <h2 className="text-2xl font-bold mb-6 text-white text-center">Sign In to CENTIFY</h2>
 
           {/* Email Sign In */}
           <form className="space-y-4 mb-6">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+              <label htmlFor="email" className="block text-sm font-medium text-white">Email</label>
               <input
                 {...authForm.register('email', { required: true })}
                 type="email"
                 placeholder="Enter your email"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-black"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Password</label>
+              <label htmlFor="email" className="block text-sm font-medium text-white">Password</label>
               <input
                 {...authForm.register('password', { required: true })}
                 type="password"
                 placeholder="Enter your Password"
-                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-black"
               />
             </div>
 
             <button
               onClick={authForm.handleSubmit(handleLoginWithGoogle)}
               disabled={!authForm.formState.isValid}
-              className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition-transform transform hover:scale-105"
+              className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 disabled:bg-gray-500"
             >
               Sign Up
             </button>
@@ -76,7 +76,7 @@ export default function Auth() {
           {/* Google Sign In */}
           <button
             onClick={authForm.handleSubmit(handleLoginWithGoogle)}
-            className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-500 transition-transform transform hover:scale-105"
+            className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-500"
           >
             Continue with Google
           </button>

@@ -9,6 +9,7 @@ export async function fetchUserExpenses() {
   let { data: expenses, error } = await supabase
     .from(TABLE_NAME)
     .select('*')
+    .order("times_spent", {ascending: false})
 
   if (error) {
     throw new Error(error.message);

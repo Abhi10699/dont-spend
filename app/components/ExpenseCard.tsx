@@ -20,7 +20,7 @@ export function ExpenseCard(props: ExpenseCardProps) {
           <h3 className="text-lg md:text-xl font-bold text-gray-300">{props.itemName}</h3>
           <p className="text-sm md:text-base text-gray-400">${props.itemPrice}</p>
           <div className="mt-4">
-            <h4 className="text-2xl md:text-3xl font-bold text-yellow-400">${props.moneySaved} Saved</h4>
+            <h4 className="text-2xl md:text-3xl font-bold text-yellow-400">${Math.abs(props.moneySaved)} {props.moneySaved < 0 ? "Wasted" : "Saved"}</h4>
           </div>
         </div>
 

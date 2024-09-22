@@ -35,7 +35,7 @@ export default function AddExpense() {
         disabled={!formState.isValid}
         className="w-full p-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500  focus:ring-indigo-400 disabled:bg-gray-500 transition-colors"
       >
-        Submit
+        Create Expense
       </button>
     </div>
   )

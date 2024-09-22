@@ -6,9 +6,9 @@ function HomeLayout(props: any) {
 
   return (
     <div className="container mx-auto p-6">
-      <nav className="flex flex-row my-3 justify-between">
+      <nav className="flex flex-row my-5 justify-between">
         <Link href="/home/">
-          <button className="text-xl font-bold">CENTIFY</button>
+          <button className="text-2xl font-black">CENTIFY</button>
         </Link>
         <Link href="/home/add">
           <button>
