@@ -30,7 +30,7 @@ export function withAuth(Component: React.ComponentType) {
       return <h1>Loading..</h1>
     }
 
-    return <Component sessionUser={sessionUser} {...props} />
+    return <Component sessionUser={sessionUser?.data.user} {...props} />
 
   };
 }
