@@ -19,7 +19,7 @@ export function ExpenseCard(props: ExpenseCardProps) {
           <h3 className="text-lg md:text-lg font-bold text-gray-300">{props.itemName}</h3>
           <p className="text-md md:text-base text-gray-400">${props.itemPrice}</p>
           <div className="mt-4">
-            <h4 className={`text-2xl md:text-3xl font-bold ${props.moneySaved < 0 ? 'text-red-400' : 'text-green-400'}`}>${Math.abs(props.moneySaved)} {props.moneySaved < 0 ? "Spent" : "Saved"}</h4>
+            <h4 className={`text-2xl md:text-3xl font-bold ${props.moneySaved < 0 ? 'text-red-400' : 'text-green-400'}`}>${Math.abs(props.moneySaved).toPrecision(3)} {props.moneySaved < 0 ? "Spent" : "Saved"}</h4>
             <p className="text-gray-600 text-md">${Math.round(props.itemPrice * 365)} <span className="italic">Saved</span> Yearly!</p>
           </div>
         </div>
@@ -38,7 +38,7 @@ export function ExpenseCard(props: ExpenseCardProps) {
           <ul className="mt-2">
             {props.goals.map(item =>
               <li className="text-sm text-gray-400 mb-6">
-                {item.purchase_name} (${item.purchase_amount}): <strong className="text-white">${item.purchase_amount - props.moneySaved}</strong> to reach target
+                {item.purchase_name} (${item.purchase_amount}): <strong className="text-white">${(item.purchase_amount - props.moneySaved).toPrecision(4)}</strong> to reach target
                 <div className="w-full bg-gray-700 rounded-sm h-2.5 mt-2">
                   <div className="bg-indigo-500 h-2.5 rounded-md" style={{ width: props.moneySaved < 0 ? '0%' : `${(props.moneySaved / item.purchase_amount) * 100}%` }}></div>
                 </div>
