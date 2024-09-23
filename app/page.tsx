@@ -9,9 +9,7 @@ export default function Home() {
 
   const handleLoginWithGoogle = async () => {
     const { error } = await supabase.auth.signInWithOAuth(
-      {
-        provider: 'google',
-      }
+      { provider: 'google' }
     );
     if (error) {
       alert(error.message)

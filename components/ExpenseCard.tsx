@@ -20,13 +20,13 @@ export function ExpenseCard(props: ExpenseCardProps) {
           <p className="text-md md:text-base text-gray-400">${props.itemPrice}</p>
           <div className="mt-4">
             <h4 className={`text-2xl md:text-3xl font-bold ${props.moneySaved < 0 ? 'text-red-400' : 'text-green-400'}`}>${Math.abs(props.moneySaved).toPrecision(3)} {props.moneySaved < 0 ? "Spent" : "Saved"}</h4>
-            <p className="text-gray-600 text-md">${Math.round(props.itemPrice * 365)} <span className="italic">Saved</span> Yearly!</p>
+            <p className="text-gray-600 text-md mt-2">${Math.round(props.itemPrice * 365)} <span className="italic">Saved</span> Yearly!</p>
           </div>
         </div>
 
         <div className="flex flex-col justify-center items-center gap-2">
           <p className="text-4xl">{props.streakDays <= 0 ? "💀" : "🔥"}</p>
-          <p className="font-bold">{props.streakDays} Days</p>
+          <p className="font-bold">{props.streakDays} Days Streak</p>
         </div>
       </div>
       <div className="flex flex-col justify-between mt-4 md:mt-0">
