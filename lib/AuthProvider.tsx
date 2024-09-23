@@ -7,8 +7,8 @@ import { User } from '@supabase/supabase-js';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 type AuthProviderProps = {
-  onUserValidationSuccessfull: (user: User) => any
-  onUserValidationFailed: () => void
+  onUserValidationSuccessfull(user: User): void
+  onUserValidationFailed(): void
   router: AppRouterInstance
 
 }
@@ -19,10 +19,13 @@ export function AuthProvider(props: PropsWithChildren<AuthProviderProps>) {
   const [userSate, setUserState] = useState<User | null>(null);
   const path = usePathname();
 
+  const { onUserValidationFailed, onUserValidationSuccessfull } = props;
+
+
   useEffect(() => {
     if (path == "/" || path == "/home") {
       const checkUser = async () => {
-        const { data: user, error } = await supabase.auth.getUser();
+        const { data: user } = await supabase.auth.getUser();
         if (user) {
           setUserState(user.user)
         }
@@ -37,11 +40,11 @@ export function AuthProvider(props: PropsWithChildren<AuthProviderProps>) {
         const user = authSession?.user;
         if (user) {
           setUserState(user)
-          props.onUserValidationSuccessfull(user)
+          onUserValidationSuccessfull(user)
         }
         else {
           setUserState(null)
-          props.onUserValidationFailed()
+          onUserValidationFailed()
         }
         setIsValidating(false);
       });
@@ -50,7 +53,7 @@ export function AuthProvider(props: PropsWithChildren<AuthProviderProps>) {
         subscription.data.subscription.unsubscribe()
       }
     }
-  }, [path])
+  }, [path, onUserValidationFailed, onUserValidationSuccessfull])
 
   if (isValidating) {
     return (

@@ -3,11 +3,12 @@ import { useEffect, useState } from "react";
 import { ExpenseCard } from "@/components/ExpenseCard";
 import { ExpenseState } from "@/lib/models/expense.model";
 import { fetchUserExpenses, fetchUserGoals, updateUserDaysSaved } from "@/lib/services/expense.service";
+import { IGoal } from "@/lib/models/goal.model";
 
 function Home() {
 
   const [userExpenses, setUserExpenses] = useState<ExpenseState[]>()
-  const [userGoals, setUserGoals] = useState<any>();
+  const [userGoals, setUserGoals] = useState<IGoal[]>([]);
   const [hydrateData, setHydrateData] = useState(0);
 
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -18,11 +19,11 @@ function Home() {
   useEffect(() => {
     fetchUserExpenses()
       .then(data => setUserExpenses(data))
-      .catch(_ => setUserExpenses([]));
+      .catch(() => setUserExpenses([]));
 
     fetchUserGoals()
       .then(goals => setUserGoals(goals))
-      .catch(err => {
+      .catch(() => {
         setUserGoals([])
       })
   }, [hydrateData])
@@ -45,6 +46,7 @@ function Home() {
     return (
       <div className="flex flex-col gap-8 my-4 relative backdrop:bg-red-300 backdrop:opacity-45">
         {userExpenses?.map(e => <ExpenseCard
+          key={e.id}
           id={e.id}
           itemName={e.itemName}
           itemPrice={e.itemCost}
@@ -60,10 +62,10 @@ function Home() {
           <p className="text-gray-400 mb-6">This action cannot be undone later*</p>
 
           <div className="flex flex-row gap-4 justify-center">
-            <button onClick={_ => handleDialogSpentClick()} className="border-red-500 border-2 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition">
+            <button onClick={() => handleDialogSpentClick()} className="border-red-500 border-2 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition">
               Yes, I am Sure
             </button>
-            <button onClick={_ => { setDialogOpen(false); setSpentItemId(-1) }} className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition">
+            <button onClick={() => { setDialogOpen(false); setSpentItemId(-1) }} className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition">
               No, It was a Mistake
             </button>
           </div>
@@ -74,7 +76,7 @@ function Home() {
   else {
     return (
       <div className="w-full h-screen flex justify-center items-center">
-        <h1 className="text-xl text-center text-gray-500">Start Adding Expenses by Clicking the "+" Icon</h1>
+        <h1 className="text-xl text-center text-gray-500">Start Adding Expenses by Clicking the <span className="italic text-xl">+</span> Icon</h1>
       </div>
     )
   }

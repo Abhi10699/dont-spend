@@ -1,9 +1,24 @@
-import Link from "next/link";
+'use client'
+
 import Image from "next/image";
 import profilePic from '@/app/assets/shoes.jpg'
+import supabase from "@/lib/supabase";
 
 
 export default function Home() {
+
+  const handleLoginWithGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth(
+      {
+        provider: 'google',
+      }
+    );
+    if (error) {
+      alert(error.message)
+    }
+  }
+
+
   return (
     <div>
       <div className="min-h-screen text-white">
@@ -16,17 +31,15 @@ export default function Home() {
           <p className="text-xl md:text-2xl mb-6 text-gray-300">
             Take control of your spending and achieve your financial goals.
           </p>
-          <Link href="/auth">
-            <button className="border-red-600 border-2 text-white px-6 py-3 rounded-md hover:bg-red-500 transition-colors">
-              Login With Google
-            </button>
-          </Link>
+          <button onClick={handleLoginWithGoogle} className="border-red-600 border-2 text-white px-6 py-3 rounded-md hover:bg-red-500 transition-colors">
+            Login With Google
+          </button>
         </section>
 
       </div>
       <section className="py-20 bg-white">
         <h2 className="text-3xl font-semibold mb-10 text-gray-900 text-center">
-          What You'll Love About Don’t Spend
+          What {"You'll"} Love About {'Don’t'} Spend
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-6">
           {/* Card 1 */}
@@ -171,10 +184,10 @@ export default function Home() {
           <div className="space-y-4">
             <h3 className="text-3xl font-bold mb-4 text-gray-800">Your Goal: $150 Sneakers</h3>
             <p className="text-lg mb-4 text-gray-700">
-              You want to buy sneakers that cost $150, but you're spending $1.50 on Oreos every day.
+              You want to buy sneakers that cost $150, but {"you're"} spending $1.50 on Oreos every day.
             </p>
             <p className="text-lg text-gray-600">
-              If you save that money, you'd buy the shoes in <strong className="font-semibold">100 days</strong> instead of spending it on snacks.
+              If you save that money, {"you'd"} buy the shoes in <strong className="font-semibold">100 days</strong> instead of spending it on snacks.
             </p>
           </div>
           {/* Right Column: Image */}
@@ -189,7 +202,7 @@ export default function Home() {
 
       {/* Call to Action Section */}
       <footer className="bg-gray-800 text-gray-200 py-6 text-center">
-        <p>&copy; 2024 Don't Spend. All rights reserved.</p>
+        <p>&copy; 2024 {"Don't"} Spend. All rights reserved.</p>
         <nav className="mt-4">
           <a href="#" className="text-indigo-400 hover:underline mx-2">Privacy Policy</a>
           <a href="#" className="text-indigo-400 hover:underline mx-2">Terms of Service</a>

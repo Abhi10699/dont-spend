@@ -1,3 +1,6 @@
+'use client';
+
+import { IGoal } from "@/lib/models/goal.model";
 import Link from "next/link";
 type ExpenseCardProps = {
   itemName: string;
@@ -5,11 +8,8 @@ type ExpenseCardProps = {
   moneySaved: number;
   streakDays: number;
   id: number,
-  goals: Array<{
-    purchase_amount: number,
-    purchase_name: string
-  }>
-  onClickSpent: (itemId: number) => any
+  goals: IGoal[]
+  onClickSpent(itemId: number): void
 }
 export function ExpenseCard(props: ExpenseCardProps) {
   return (
@@ -31,13 +31,13 @@ export function ExpenseCard(props: ExpenseCardProps) {
       </div>
       <div className="flex flex-col justify-between mt-4 md:mt-0">
         <div className="flex justify-start md:justify-end gap-2 mb-4">
-          <button onClick={_ => props.onClickSpent(props.id)} className="py-3 w-full border-2 border-red-500 text-white rounded-lg ">Spent 😖</button>
+          <button onClick={() => props.onClickSpent(props.id)} className="py-3 w-full border-2 border-red-500 text-white rounded-lg ">Spent 😖</button>
         </div>
         {props.goals && props.goals.length != 0 ? <div className="border-t border-gray-700 pt-4">
           <h4 className="text-lg font-medium text-gray-300">Goals</h4>
           <ul className="mt-2">
             {props.goals.map(item =>
-              <li className="text-sm text-gray-400 mb-6">
+              <li className="text-sm text-gray-400 mb-6" key={item.id}>
                 {item.purchase_name} (${item.purchase_amount}): <strong className="text-white">${(item.purchase_amount - props.moneySaved).toPrecision(4)}</strong> to reach target
                 <div className="w-full bg-gray-700 rounded-sm h-2.5 mt-2">
                   <div className="bg-indigo-500 h-2.5 rounded-md" style={{ width: props.moneySaved < 0 ? '0%' : `${(props.moneySaved / item.purchase_amount) * 100}%` }}></div>

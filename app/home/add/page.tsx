@@ -15,7 +15,7 @@ export default function AddExpense() {
   const routeParam = useSearchParams();
   const router = useRouter();
 
-  const { register, formState, handleSubmit, getValues } = useForm<IItem>({
+  const { register, formState, handleSubmit } = useForm<IItem>({
     defaultValues: {
       itemName: '',
       itemCost: 0,
@@ -26,13 +26,13 @@ export default function AddExpense() {
 
   const handleFormSubmit = async (item: IItem) => {
     if (item.isGoal) {
-      const { data, error } = await insertUserGoal(item);
+      const { error } = await insertUserGoal(item);
       if (!error) {
         router.replace("/home")
       }
     }
     else {
-      const { data, error } = await insertUserExpense(item);
+      const { error } = await insertUserExpense(item);
       if (!error) {
         router.replace("/home")
       }

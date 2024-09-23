@@ -1,5 +1,5 @@
 'use client'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import "./globals.css";
 import { AuthProvider } from "@/lib/AuthProvider";
 
@@ -14,7 +14,7 @@ export default function RootLayout({
       <body className={`antialiased`}>
         <AuthProvider
           router={router}
-          onUserValidationSuccessfull={_ => router.push("/home")}
+          onUserValidationSuccessfull={() => router.push("/home")}
           onUserValidationFailed={() => router.push("/")}>
           {children}
         </AuthProvider>
