@@ -62,9 +62,12 @@ export default function AddExpense() {
         />
       </div>
 
-      <div className="mb-4 flex">
-        <input type="checkbox" id="goalCheck" {...register('isGoal')} onChange={e => setIsGoalMarked(e.target.checked)} />
-        <label htmlFor="goalCheck" className="mx-2 block text-white">Set as Goal</label>
+      <div className="mb-4">
+        <div className="flex flex-row items-center">
+          <input type="checkbox" id="goalCheck" {...register('isGoal')} onChange={e => setIsGoalMarked(e.target.checked)} />
+          <label htmlFor="goalCheck" className="mx-2 block text-white">Set as Goal</label>
+        </div>
+        <p className="my-2 text-sm text-gray-600 italic">{isGoalMarked ? "Goals help you save for specific targets like shoes or vacations" : "Expenses track your daily spending."} Start by setting up expenses if you {"haven't"} yet.</p>
       </div>
 
       <div className="flex flex-col gap-3">
