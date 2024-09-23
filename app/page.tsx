@@ -9,7 +9,7 @@ export default function Home() {
       <div className="min-h-screen text-white">
         {/* Navbar + Hero Section */}
         <nav className="w-full py-4 px-8 bg-black text-white flex justify-between items-center fixed top-0 left-0 z-10">
-          <div className="text-2xl font-bold">CENTIFY</div>
+          <div className="text-2xl font-black">CENTIFY</div>
         </nav>
         <section className="h-screen flex flex-col justify-center items-center text-center px-4 bg-black">
           <h1 className="text-6xl font-bold mb-6 text-white">Make Every Cent Count</h1>

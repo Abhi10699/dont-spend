@@ -1,7 +1,7 @@
 'use client'
 import { useForm } from "react-hook-form"
-import { IExpense } from "../models/expense.model";
-import { insertUserExpense } from "../services/expense.service";
+import { IExpense } from "@/lib/models/expense.model";
+import { insertUserExpense } from "@/lib/services/expense.service";
 
 
 

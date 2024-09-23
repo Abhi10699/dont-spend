@@ -1,6 +1,6 @@
 'use client';
 
-import supabase from "@/app/supabase";
+import supabase from "@/lib/supabase";
 import { useForm } from 'react-hook-form';
 
 

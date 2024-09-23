@@ -1,12 +1,10 @@
 'use client'
-
 import { useEffect, useState } from "react";
-import { ExpenseCard } from "../components/ExpenseCard";
-import { ExpenseState } from "./models/expense.model";
-import { fetchUserExpenses } from "./services/expense.service";
+import { ExpenseCard } from "@/components/ExpenseCard";
+import { ExpenseState } from "@/lib/models/expense.model";
+import { fetchUserExpenses } from "@/lib/services/expense.service";
 
-
-function Home(props: any) {
+function Home() {
 
   const [userExpenses, setUserExpenses] = useState<ExpenseState[]>()
 
@@ -15,7 +13,6 @@ function Home(props: any) {
       .then(data => setUserExpenses(data))
       .catch(_ => setUserExpenses([]));
   }, [])
-
 
   return (
     <div className="flex flex-col gap-3">

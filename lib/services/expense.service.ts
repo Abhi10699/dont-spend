@@ -1,5 +1,5 @@
-import supabase from "@/app/supabase";
-import { ExpenseState, IExpense } from "../models/expense.model";
+import supabase from "@/lib/supabase";
+import { ExpenseState, IExpense } from "@/lib/models/expense.model";
 
 
 const TABLE_NAME = "expenses";

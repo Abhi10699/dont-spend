@@ -24,9 +24,7 @@ export class ExpenseState {
     this.createdSinceDays = this.computeDays(expense.created_at);
     this.totalSaved = (this.createdSinceDays * this.itemCost) - (this.timesSpent * this.itemCost);
     this.id = expense.id
-
-    console.log(expense, this);
-  }
+ }
 
   computeDays(dateTimestamp: string) {
     const targetDate = new Date(dateTimestamp);

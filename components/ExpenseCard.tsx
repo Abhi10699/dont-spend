@@ -1,4 +1,4 @@
-import { updateUserDaysSaved } from "../home/services/expense.service"
+import { updateUserDaysSaved } from "@/lib/services/expense.service"
 
 type ExpenseCardProps = {
   itemName: string;

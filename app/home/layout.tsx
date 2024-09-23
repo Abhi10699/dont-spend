@@ -1,12 +1,8 @@
-'use client';
-import { withAuth } from "../withAuth"
 import Link from 'next/link';
-
 function HomeLayout(props: any) {
-
   return (
-    <div className="container mx-auto p-6">
-      <nav className="flex flex-row my-5 justify-between">
+    <div className="container mx-auto px-3">
+      <nav className="flex flex-row my-5 py-5 justify-between border-b-2 border-gray-600">
         <Link href="/home/">
           <button className="text-2xl font-black">CENTIFY</button>
         </Link>
@@ -23,4 +19,4 @@ function HomeLayout(props: any) {
   )
 }
 
-export default withAuth(HomeLayout)
+export default HomeLayout
