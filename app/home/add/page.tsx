@@ -3,12 +3,15 @@ import { useForm } from "react-hook-form"
 import { IExpense } from "@/lib/models/expense.model";
 import { insertUserExpense, insertUserGoal } from "@/lib/services/expense.service";
 import { useSearchParams } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 
-type IItem = IExpense & {isGoal: boolean};
+type IItem = IExpense & { isGoal: boolean };
 
 export default function AddExpense() {
   const routeParam = useSearchParams();
+  const router = useRouter();
+
   const { register, formState, handleSubmit } = useForm<IItem>({
     defaultValues: {
       itemName: '',
@@ -17,13 +20,18 @@ export default function AddExpense() {
     }
   });
 
-
-  const handleFormSubmit = (item: IItem) => {
+  const handleFormSubmit = async (item: IItem) => {
     if (item.isGoal) {
-      insertUserGoal(item);
+      const { data, error } = await insertUserGoal(item);
+      if (!error) {
+        router.replace("/home")
+      }
     }
     else {
-      insertUserExpense(item);
+      const { data, error } = await insertUserExpense(item);
+      if (!error) {
+        router.replace("/home")
+      }
     }
   }
 

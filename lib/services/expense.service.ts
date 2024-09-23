@@ -28,9 +28,6 @@ export async function fetchUserGoals() {
 }
 
 
-
-
-
 // insert new expense
 export async function insertUserExpense(payload: IExpense) {
   const userObj = await supabase.auth.getUser()
@@ -39,8 +36,8 @@ export async function insertUserExpense(payload: IExpense) {
     itemCost: payload.itemCost,
     user_id: userObj.data.user?.id
   }]);
-  console.log("Error: ", error)
-  console.log("Data: ", data);
+
+  return { data, error }
 }
 
 export async function insertUserGoal(payload: IExpense) {
@@ -50,11 +47,9 @@ export async function insertUserGoal(payload: IExpense) {
     purchase_amount: payload.itemCost,
     user_id: userObj.data.user?.id
   }]);
-  console.log("Error: ", error)
-  console.log("Data: ", data);
+
+  return { data, error }
 }
-
-
 
 // Update days saved
 

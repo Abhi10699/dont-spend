@@ -34,7 +34,7 @@ export function ExpenseCard(props: ExpenseCardProps) {
         <div className="flex justify-start md:justify-end gap-2 mb-4">
           <button onClick={_ => updateUserDaysSaved(props.id)} className="py-3 w-full border-2 border-red-500 text-white rounded-lg ">Spent 😖</button>
         </div>
-        {props.goals.length != 0 ? <div className="border-t border-gray-700 pt-4">
+        {props.goals && props.goals.length != 0 ? <div className="border-t border-gray-700 pt-4">
           <h4 className="text-lg font-medium text-gray-300">Goals</h4>
           <ul className="mt-2">
             {props.goals.map(item =>

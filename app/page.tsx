@@ -17,8 +17,8 @@ export default function Home() {
             Take control of your spending and achieve your financial goals.
           </p>
           <Link href="/auth">
-            <button className="bg-indigo-600 text-white px-6 py-3 rounded-md hover:bg-indigo-500 transition-colors">
-              Start Saving
+            <button className="border-red-600 border-2 text-white px-6 py-3 rounded-md hover:bg-red-500 transition-colors">
+              Login With Google
             </button>
           </Link>
         </section>
