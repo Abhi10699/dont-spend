@@ -30,7 +30,7 @@ export class ExpenseState {
     const targetDate = new Date(dateTimestamp);
     const targetDateMs = targetDate.getTime()
     const today = Date.now()
-    const streakDays = Math.floor((targetDateMs - today) / (1000 * 3600 * 24))
+    const streakDays = Math.round((today - targetDateMs) / (1000 * 3600 * 24))
     return streakDays < 0 ? 0 : streakDays
   }
 }
