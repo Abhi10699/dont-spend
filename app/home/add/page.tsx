@@ -4,20 +4,24 @@ import { IExpense } from "@/lib/models/expense.model";
 import { insertUserExpense, insertUserGoal } from "@/lib/services/expense.service";
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Link from "next/link";
 
 
 type IItem = IExpense & { isGoal: boolean };
 
 export default function AddExpense() {
+  const [isGoalMarked, setIsGoalMarked] = useState<boolean>();
   const routeParam = useSearchParams();
   const router = useRouter();
 
-  const { register, formState, handleSubmit } = useForm<IItem>({
+  const { register, formState, handleSubmit, getValues } = useForm<IItem>({
     defaultValues: {
       itemName: '',
       itemCost: 0,
       isGoal: routeParam.get('isGoal') == 'true'
-    }
+    },
+    reValidateMode: "onChange"
   });
 
   const handleFormSubmit = async (item: IItem) => {
@@ -59,18 +63,29 @@ export default function AddExpense() {
       </div>
 
       <div className="mb-4 flex">
-        <input type="checkbox" id="goalCheck" {...register('isGoal')} />
+        <input type="checkbox" id="goalCheck" {...register('isGoal')} onChange={e => setIsGoalMarked(e.target.checked)} />
         <label htmlFor="goalCheck" className="mx-2 block text-white">Set as Goal</label>
       </div>
 
-      <button
-        onClick={handleSubmit(handleFormSubmit)}
-        type="button"
-        disabled={!formState.isValid}
-        className="w-full p-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500  focus:ring-indigo-400 disabled:bg-gray-500 transition-colors"
-      >
-        Create Expense
-      </button>
+      <div className="flex flex-col gap-3">
+        <button
+          onClick={handleSubmit(handleFormSubmit)}
+          type="button"
+          disabled={!formState.isValid}
+          className={`w-full p-3 ${isGoalMarked ? "bg-green-600" : "bg-red-500"} text-white rounded-lg hover:bg-indigo-500  focus:ring-indigo-400 disabled:bg-gray-500 transition-colors`}
+        >
+          Create {isGoalMarked ? "Goal" : "Expense"}
+        </button>
+
+        <Link href="/home" className="my-3">
+          <button
+            type="button"
+            className="w-full p-3 border-gray-600 border-2 text-white rounded-lg hover:bg-gray-500 transition-colors"
+          >
+            Go Back
+          </button>
+        </Link>
+      </div>
     </div>
   )
 }
