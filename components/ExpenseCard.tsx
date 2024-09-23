@@ -1,6 +1,4 @@
-import { updateUserDaysSaved } from "@/lib/services/expense.service"
 import Link from "next/link";
-
 type ExpenseCardProps = {
   itemName: string;
   itemPrice: number;
@@ -11,10 +9,11 @@ type ExpenseCardProps = {
     purchase_amount: number,
     purchase_name: string
   }>
+  onClickSpent: (itemId: number) => any
 }
 export function ExpenseCard(props: ExpenseCardProps) {
   return (
-    <div className="p-6 bg-[#131313] rounded-lg shadow-lg grid gap-4">
+    <div className="p-6 bg-[#131313] rounded-lg shadow-lg grid gap-4 relative">
       <div className="flex flex-row justify-between">
         <div>
           <h3 className="text-lg md:text-lg font-bold text-gray-300">{props.itemName}</h3>
@@ -32,7 +31,7 @@ export function ExpenseCard(props: ExpenseCardProps) {
       </div>
       <div className="flex flex-col justify-between mt-4 md:mt-0">
         <div className="flex justify-start md:justify-end gap-2 mb-4">
-          <button onClick={_ => updateUserDaysSaved(props.id)} className="py-3 w-full border-2 border-red-500 text-white rounded-lg ">Spent 😖</button>
+          <button onClick={_ => props.onClickSpent(props.id)} className="py-3 w-full border-2 border-red-500 text-white rounded-lg ">Spent 😖</button>
         </div>
         {props.goals && props.goals.length != 0 ? <div className="border-t border-gray-700 pt-4">
           <h4 className="text-lg font-medium text-gray-300">Goals</h4>
@@ -41,7 +40,7 @@ export function ExpenseCard(props: ExpenseCardProps) {
               <li className="text-sm text-gray-400 mb-6">
                 {item.purchase_name} (${item.purchase_amount}): <strong className="text-white">${item.purchase_amount - props.moneySaved}</strong> to reach target
                 <div className="w-full bg-gray-700 rounded-sm h-2.5 mt-2">
-                  <div className="bg-indigo-500 h-2.5 rounded-md" style={{ width: props.moneySaved < 0 ? '0%' : `${(props.moneySaved / item.purchase_amount)*100}%`}}></div>
+                  <div className="bg-indigo-500 h-2.5 rounded-md" style={{ width: props.moneySaved < 0 ? '0%' : `${(props.moneySaved / item.purchase_amount) * 100}%` }}></div>
                 </div>
               </li>
             )}
@@ -55,6 +54,5 @@ export function ExpenseCard(props: ExpenseCardProps) {
         }
       </div>
     </div>
-
   )
 }
