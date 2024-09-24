@@ -65,7 +65,7 @@ function Home() {
             <button onClick={() => handleDialogSpentClick()} className="border-red-500 border-2 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition">
               Yes, I am Sure
             </button>
-            <button onClick={() => { setDialogOpen(false); setSpentItemId(-1) }} className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition">
+            <button onClick={() => { setDialogOpen(false); setSpentItemId(-1) }} className="bg-indigo-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-indigo-500 transition">
               No, It was a Mistake
             </button>
           </div>
