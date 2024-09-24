@@ -28,12 +28,12 @@ export function ExpenseCard(props: ExpenseCardProps) {
 
         <div className="flex flex-col justify-center items-center gap-2">
           <p className="text-4xl">{props.streakDays <= 0 ? "💀" : "🔥"}</p>
-          <p className="font-bold">{props.streakDays} Days Streak</p>
+          <p className="text-sm font-bold">{props.streakDays} Days Streak</p>
         </div>
       </div>
       <div className="flex flex-col justify-between mt-4 md:mt-0">
         <div className="flex justify-start md:justify-end gap-2 mb-4">
-          <button onClick={() => props.onClickSpent(props.id)} className="py-3 w-full border-2 border-red-500 text-white rounded-lg ">Spent 😖</button>
+          <button onClick={() => props.onClickSpent(props.id)} className="py-3 w-full border-2 border-red-500 text-white rounded-lg hover:bg-red-600">Spent 😖</button>
         </div>
         {props.goals && props.goals.length != 0 ? <div className="border-t border-gray-700 pt-4">
           <h4 className="text-lg font-medium text-gray-300">Goals</h4>
