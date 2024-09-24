@@ -28,7 +28,8 @@ export function ExpenseCard(props: ExpenseCardProps) {
 
         <div className="flex flex-col justify-center items-center gap-2">
           <p className="text-4xl">{props.streakDays <= 0 ? "💀" : "🔥"}</p>
-          <p className="text-sm font-bold">{props.streakDays} Days Streak</p>
+          <p className="text-md font-bold text-center text-gray-400">{props.streakDays} Days Streak</p>
+          {/* <span className="text-[10px]">Streak</span> */}
         </div>
       </div>
       <div className="flex flex-col justify-between mt-4 md:mt-0">
