@@ -57,15 +57,15 @@ function Home() {
         />)}
         <div className={`${dialogOpen ? "fixed" : "hidden"} inset-0 z-10 backdrop-blur-sm backdrop-brightness-50`}></div>
         <dialog open={dialogOpen} className="bg-[#131313] text-white w-full max-w-md p-6 rounded-lg shadow-lg mx-auto z-10">
-          <h1 className="text-2xl font-black mb-4">Are You Sure?</h1>
+          <h1 className="text-2xl font-black mb-4">Confirm Expense</h1>
 
-          <p className="text-gray-400 mb-6">This action cannot be undone later*</p>
+          <p className="text-gray-400 mb-6">Are you sure you want to mark this as an expense? This action will <b>break your current streak and reduce your savings.</b></p>
 
           <div className="flex flex-row gap-4 justify-center">
             <button onClick={() => handleDialogSpentClick()} className="border-red-500 border-2 text-white px-6 py-3 rounded-lg shadow-md hover:bg-red-600 transition">
               Yes, I am Sure
             </button>
-            <button onClick={() => { setDialogOpen(false); setSpentItemId(-1) }} className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition">
+            <button onClick={() => { setDialogOpen(false); setSpentItemId(-1) }} className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-green-600 transition">
               No, It was a Mistake
             </button>
           </div>
